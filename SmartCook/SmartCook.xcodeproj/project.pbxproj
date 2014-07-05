@@ -1,0 +1,592 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4F4994001869F1FE0091CFE6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F4993FF1869F1FE0091CFE6 /* libsqlite3.dylib */; };
+		4F4994031869F6D00091CFE6 /* SmartCookDB.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F4994021869F6D00091CFE6 /* SmartCookDB.sqlite3 */; };
+		4F4994061869FB4F0091CFE6 /* SCIngredientInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4994051869FB4F0091CFE6 /* SCIngredientInfo.m */; };
+		4F4994091869FD4F0091CFE6 /* SCIngredientDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4994081869FD4F0091CFE6 /* SCIngredientDatabase.m */; };
+		4F77D267186C7FE900987070 /* SCRecipeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F77D266186C7FE900987070 /* SCRecipeInfo.m */; };
+		4F77D26A186C800200987070 /* SCRecipeDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F77D269186C800200987070 /* SCRecipeDatabase.m */; };
+		4F939530186A2FB8004D8148 /* SCIngredientsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F93952F186A2FB8004D8148 /* SCIngredientsListViewController.m */; };
+		4F939538186A3651004D8148 /* SCIngredientsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F939537186A3651004D8148 /* SCIngredientsDetailViewController.m */; };
+		4FE10BC11869087500E70805 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE10BC01869087500E70805 /* Foundation.framework */; };
+		4FE10BC31869087500E70805 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE10BC21869087500E70805 /* CoreGraphics.framework */; };
+		4FE10BC51869087500E70805 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE10BC41869087500E70805 /* UIKit.framework */; };
+		4FE10BCB1869087500E70805 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4FE10BC91869087500E70805 /* InfoPlist.strings */; };
+		4FE10BCD1869087500E70805 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE10BCC1869087500E70805 /* main.m */; };
+		4FE10BD11869087500E70805 /* SCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE10BD01869087500E70805 /* SCAppDelegate.m */; };
+		4FE10BD41869087500E70805 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FE10BD21869087500E70805 /* Main.storyboard */; };
+		4FE10BD71869087500E70805 /* SCMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE10BD61869087500E70805 /* SCMasterViewController.m */; };
+		4FE10BDA1869087500E70805 /* SCDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE10BD91869087500E70805 /* SCDetailViewController.m */; };
+		4FE10BDC1869087500E70805 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FE10BDB1869087500E70805 /* Images.xcassets */; };
+		4FE10BE31869087500E70805 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE10BE21869087500E70805 /* XCTest.framework */; };
+		4FE10BE41869087500E70805 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE10BC01869087500E70805 /* Foundation.framework */; };
+		4FE10BE51869087500E70805 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE10BC41869087500E70805 /* UIKit.framework */; };
+		4FE10BED1869087500E70805 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4FE10BEB1869087500E70805 /* InfoPlist.strings */; };
+		4FE10BEF1869087500E70805 /* SmartCookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE10BEE1869087500E70805 /* SmartCookTests.m */; };
+		4FF056291882019000A88542 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF056281882019000A88542 /* Parse.framework */; };
+		4FF056331882023A00A88542 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF0562A1882023A00A88542 /* AudioToolbox.framework */; };
+		4FF056341882023A00A88542 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF0562B1882023A00A88542 /* CFNetwork.framework */; };
+		4FF056351882023A00A88542 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF0562C1882023A00A88542 /* CoreLocation.framework */; };
+		4FF056361882023A00A88542 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF0562D1882023A00A88542 /* libz.1.1.3.dylib */; };
+		4FF056371882023A00A88542 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF0562E1882023A00A88542 /* MobileCoreServices.framework */; };
+		4FF056381882023A00A88542 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF0562F1882023A00A88542 /* QuartzCore.framework */; };
+		4FF056391882023A00A88542 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF056301882023A00A88542 /* Security.framework */; };
+		4FF0563A1882023A00A88542 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF056311882023A00A88542 /* StoreKit.framework */; };
+		4FF0563B1882023A00A88542 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF056321882023A00A88542 /* SystemConfiguration.framework */; };
+		4FF0563D1882059200A88542 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF0563C1882059200A88542 /* iAd.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4FE10BE61869087500E70805 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4FE10BB51869087400E70805 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4FE10BBC1869087400E70805;
+			remoteInfo = SmartCook;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4F262CA61876015C00FC6828 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		4F4993FF1869F1FE0091CFE6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		4F4994021869F6D00091CFE6 /* SmartCookDB.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SmartCookDB.sqlite3; sourceTree = "<group>"; };
+		4F4994041869FB4F0091CFE6 /* SCIngredientInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIngredientInfo.h; sourceTree = "<group>"; };
+		4F4994051869FB4F0091CFE6 /* SCIngredientInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIngredientInfo.m; sourceTree = "<group>"; };
+		4F4994071869FD4F0091CFE6 /* SCIngredientDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIngredientDatabase.h; sourceTree = "<group>"; };
+		4F4994081869FD4F0091CFE6 /* SCIngredientDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIngredientDatabase.m; sourceTree = "<group>"; };
+		4F77D265186C7FE900987070 /* SCRecipeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecipeInfo.h; sourceTree = "<group>"; };
+		4F77D266186C7FE900987070 /* SCRecipeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecipeInfo.m; sourceTree = "<group>"; };
+		4F77D268186C800200987070 /* SCRecipeDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecipeDatabase.h; sourceTree = "<group>"; };
+		4F77D269186C800200987070 /* SCRecipeDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecipeDatabase.m; sourceTree = "<group>"; };
+		4F93952E186A2FB8004D8148 /* SCIngredientsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIngredientsListViewController.h; sourceTree = "<group>"; };
+		4F93952F186A2FB8004D8148 /* SCIngredientsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIngredientsListViewController.m; sourceTree = "<group>"; };
+		4F939536186A3651004D8148 /* SCIngredientsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIngredientsDetailViewController.h; sourceTree = "<group>"; };
+		4F939537186A3651004D8148 /* SCIngredientsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIngredientsDetailViewController.m; sourceTree = "<group>"; };
+		4FE10BBD1869087500E70805 /* SmartCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FE10BC01869087500E70805 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4FE10BC21869087500E70805 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4FE10BC41869087500E70805 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4FE10BC81869087500E70805 /* SmartCook-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartCook-Info.plist"; sourceTree = "<group>"; };
+		4FE10BCA1869087500E70805 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4FE10BCC1869087500E70805 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4FE10BCE1869087500E70805 /* SmartCook-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartCook-Prefix.pch"; sourceTree = "<group>"; };
+		4FE10BCF1869087500E70805 /* SCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCAppDelegate.h; sourceTree = "<group>"; };
+		4FE10BD01869087500E70805 /* SCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCAppDelegate.m; sourceTree = "<group>"; };
+		4FE10BD31869087500E70805 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4FE10BD51869087500E70805 /* SCMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCMasterViewController.h; sourceTree = "<group>"; };
+		4FE10BD61869087500E70805 /* SCMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCMasterViewController.m; sourceTree = "<group>"; };
+		4FE10BD81869087500E70805 /* SCDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCDetailViewController.h; sourceTree = "<group>"; };
+		4FE10BD91869087500E70805 /* SCDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCDetailViewController.m; sourceTree = "<group>"; };
+		4FE10BDB1869087500E70805 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4FE10BE11869087500E70805 /* SmartCookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartCookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FE10BE21869087500E70805 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		4FE10BEA1869087500E70805 /* SmartCookTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartCookTests-Info.plist"; sourceTree = "<group>"; };
+		4FE10BEC1869087500E70805 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4FE10BEE1869087500E70805 /* SmartCookTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartCookTests.m; sourceTree = "<group>"; };
+		4FF056281882019000A88542 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		4FF0562A1882023A00A88542 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		4FF0562B1882023A00A88542 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		4FF0562C1882023A00A88542 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4FF0562D1882023A00A88542 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		4FF0562E1882023A00A88542 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		4FF0562F1882023A00A88542 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4FF056301882023A00A88542 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4FF056311882023A00A88542 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		4FF056321882023A00A88542 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4FF0563C1882059200A88542 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4FE10BBA1869087400E70805 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FF0563D1882059200A88542 /* iAd.framework in Frameworks */,
+				4FF056331882023A00A88542 /* AudioToolbox.framework in Frameworks */,
+				4FF056341882023A00A88542 /* CFNetwork.framework in Frameworks */,
+				4FF056351882023A00A88542 /* CoreLocation.framework in Frameworks */,
+				4FF056361882023A00A88542 /* libz.1.1.3.dylib in Frameworks */,
+				4FF056371882023A00A88542 /* MobileCoreServices.framework in Frameworks */,
+				4FF056381882023A00A88542 /* QuartzCore.framework in Frameworks */,
+				4FF056391882023A00A88542 /* Security.framework in Frameworks */,
+				4FF0563A1882023A00A88542 /* StoreKit.framework in Frameworks */,
+				4FF0563B1882023A00A88542 /* SystemConfiguration.framework in Frameworks */,
+				4FE10BC31869087500E70805 /* CoreGraphics.framework in Frameworks */,
+				4F4994001869F1FE0091CFE6 /* libsqlite3.dylib in Frameworks */,
+				4FE10BC51869087500E70805 /* UIKit.framework in Frameworks */,
+				4FE10BC11869087500E70805 /* Foundation.framework in Frameworks */,
+				4FF056291882019000A88542 /* Parse.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FE10BDE1869087500E70805 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FE10BE31869087500E70805 /* XCTest.framework in Frameworks */,
+				4FE10BE51869087500E70805 /* UIKit.framework in Frameworks */,
+				4FE10BE41869087500E70805 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4F4994011869F42D0091CFE6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4F4994021869F6D00091CFE6 /* SmartCookDB.sqlite3 */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		4FE10BB41869087400E70805 = {
+			isa = PBXGroup;
+			children = (
+				4FF056281882019000A88542 /* Parse.framework */,
+				4F4994011869F42D0091CFE6 /* Resources */,
+				4FE10BC61869087500E70805 /* SmartCook */,
+				4FE10BE81869087500E70805 /* SmartCookTests */,
+				4FE10BBF1869087500E70805 /* Frameworks */,
+				4FE10BBE1869087500E70805 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4FE10BBE1869087500E70805 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4FE10BBD1869087500E70805 /* SmartCook.app */,
+				4FE10BE11869087500E70805 /* SmartCookTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4FE10BBF1869087500E70805 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4FF0563C1882059200A88542 /* iAd.framework */,
+				4FF0562A1882023A00A88542 /* AudioToolbox.framework */,
+				4FF0562B1882023A00A88542 /* CFNetwork.framework */,
+				4FF0562C1882023A00A88542 /* CoreLocation.framework */,
+				4FF0562D1882023A00A88542 /* libz.1.1.3.dylib */,
+				4FF0562E1882023A00A88542 /* MobileCoreServices.framework */,
+				4FF0562F1882023A00A88542 /* QuartzCore.framework */,
+				4FF056301882023A00A88542 /* Security.framework */,
+				4FF056311882023A00A88542 /* StoreKit.framework */,
+				4FF056321882023A00A88542 /* SystemConfiguration.framework */,
+				4F262CA61876015C00FC6828 /* AdSupport.framework */,
+				4F4993FF1869F1FE0091CFE6 /* libsqlite3.dylib */,
+				4FE10BC01869087500E70805 /* Foundation.framework */,
+				4FE10BC21869087500E70805 /* CoreGraphics.framework */,
+				4FE10BC41869087500E70805 /* UIKit.framework */,
+				4FE10BE21869087500E70805 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4FE10BC61869087500E70805 /* SmartCook */ = {
+			isa = PBXGroup;
+			children = (
+				4FE10BCF1869087500E70805 /* SCAppDelegate.h */,
+				4FE10BD01869087500E70805 /* SCAppDelegate.m */,
+				4FE10BD21869087500E70805 /* Main.storyboard */,
+				4FE10BD51869087500E70805 /* SCMasterViewController.h */,
+				4FE10BD61869087500E70805 /* SCMasterViewController.m */,
+				4FE10BD81869087500E70805 /* SCDetailViewController.h */,
+				4FE10BD91869087500E70805 /* SCDetailViewController.m */,
+				4F93952E186A2FB8004D8148 /* SCIngredientsListViewController.h */,
+				4F93952F186A2FB8004D8148 /* SCIngredientsListViewController.m */,
+				4F939536186A3651004D8148 /* SCIngredientsDetailViewController.h */,
+				4F939537186A3651004D8148 /* SCIngredientsDetailViewController.m */,
+				4F4994041869FB4F0091CFE6 /* SCIngredientInfo.h */,
+				4F4994051869FB4F0091CFE6 /* SCIngredientInfo.m */,
+				4F4994071869FD4F0091CFE6 /* SCIngredientDatabase.h */,
+				4F4994081869FD4F0091CFE6 /* SCIngredientDatabase.m */,
+				4F77D265186C7FE900987070 /* SCRecipeInfo.h */,
+				4F77D266186C7FE900987070 /* SCRecipeInfo.m */,
+				4F77D268186C800200987070 /* SCRecipeDatabase.h */,
+				4F77D269186C800200987070 /* SCRecipeDatabase.m */,
+				4FE10BDB1869087500E70805 /* Images.xcassets */,
+				4FE10BC71869087500E70805 /* Supporting Files */,
+			);
+			path = SmartCook;
+			sourceTree = "<group>";
+		};
+		4FE10BC71869087500E70805 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4FE10BC81869087500E70805 /* SmartCook-Info.plist */,
+				4FE10BC91869087500E70805 /* InfoPlist.strings */,
+				4FE10BCC1869087500E70805 /* main.m */,
+				4FE10BCE1869087500E70805 /* SmartCook-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4FE10BE81869087500E70805 /* SmartCookTests */ = {
+			isa = PBXGroup;
+			children = (
+				4FE10BEE1869087500E70805 /* SmartCookTests.m */,
+				4FE10BE91869087500E70805 /* Supporting Files */,
+			);
+			path = SmartCookTests;
+			sourceTree = "<group>";
+		};
+		4FE10BE91869087500E70805 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4FE10BEA1869087500E70805 /* SmartCookTests-Info.plist */,
+				4FE10BEB1869087500E70805 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4FE10BBC1869087400E70805 /* SmartCook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FE10BF21869087500E70805 /* Build configuration list for PBXNativeTarget "SmartCook" */;
+			buildPhases = (
+				4FE10BB91869087400E70805 /* Sources */,
+				4FE10BBA1869087400E70805 /* Frameworks */,
+				4FE10BBB1869087400E70805 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmartCook;
+			productName = SmartCook;
+			productReference = 4FE10BBD1869087500E70805 /* SmartCook.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4FE10BE01869087500E70805 /* SmartCookTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FE10BF51869087500E70805 /* Build configuration list for PBXNativeTarget "SmartCookTests" */;
+			buildPhases = (
+				4FE10BDD1869087500E70805 /* Sources */,
+				4FE10BDE1869087500E70805 /* Frameworks */,
+				4FE10BDF1869087500E70805 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4FE10BE71869087500E70805 /* PBXTargetDependency */,
+			);
+			name = SmartCookTests;
+			productName = SmartCookTests;
+			productReference = 4FE10BE11869087500E70805 /* SmartCookTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4FE10BB51869087400E70805 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SC;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Noah Dayan";
+				TargetAttributes = {
+					4FE10BE01869087500E70805 = {
+						TestTargetID = 4FE10BBC1869087400E70805;
+					};
+				};
+			};
+			buildConfigurationList = 4FE10BB81869087400E70805 /* Build configuration list for PBXProject "SmartCook" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4FE10BB41869087400E70805;
+			productRefGroup = 4FE10BBE1869087500E70805 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4FE10BBC1869087400E70805 /* SmartCook */,
+				4FE10BE01869087500E70805 /* SmartCookTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4FE10BBB1869087400E70805 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FE10BDC1869087500E70805 /* Images.xcassets in Resources */,
+				4FE10BCB1869087500E70805 /* InfoPlist.strings in Resources */,
+				4FE10BD41869087500E70805 /* Main.storyboard in Resources */,
+				4F4994031869F6D00091CFE6 /* SmartCookDB.sqlite3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FE10BDF1869087500E70805 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FE10BED1869087500E70805 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4FE10BB91869087400E70805 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F77D26A186C800200987070 /* SCRecipeDatabase.m in Sources */,
+				4F77D267186C7FE900987070 /* SCRecipeInfo.m in Sources */,
+				4FE10BD71869087500E70805 /* SCMasterViewController.m in Sources */,
+				4F939530186A2FB8004D8148 /* SCIngredientsListViewController.m in Sources */,
+				4F939538186A3651004D8148 /* SCIngredientsDetailViewController.m in Sources */,
+				4F4994061869FB4F0091CFE6 /* SCIngredientInfo.m in Sources */,
+				4FE10BD11869087500E70805 /* SCAppDelegate.m in Sources */,
+				4F4994091869FD4F0091CFE6 /* SCIngredientDatabase.m in Sources */,
+				4FE10BCD1869087500E70805 /* main.m in Sources */,
+				4FE10BDA1869087500E70805 /* SCDetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FE10BDD1869087500E70805 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FE10BEF1869087500E70805 /* SmartCookTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4FE10BE71869087500E70805 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4FE10BBC1869087400E70805 /* SmartCook */;
+			targetProxy = 4FE10BE61869087500E70805 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4FE10BC91869087500E70805 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FE10BCA1869087500E70805 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4FE10BD21869087500E70805 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FE10BD31869087500E70805 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4FE10BEB1869087500E70805 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FE10BEC1869087500E70805 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4FE10BF01869087500E70805 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		4FE10BF11869087500E70805 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4FE10BF31869087500E70805 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Noah/Documents/iPhone/SmartCook,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartCook/SmartCook-Prefix.pch";
+				INFOPLIST_FILE = "SmartCook/SmartCook-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4FE10BF41869087500E70805 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Noah/Documents/iPhone/SmartCook,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartCook/SmartCook-Prefix.pch";
+				INFOPLIST_FILE = "SmartCook/SmartCook-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		4FE10BF61869087500E70805 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartCook.app/SmartCook";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartCook/SmartCook-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SmartCookTests/SmartCookTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		4FE10BF71869087500E70805 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartCook.app/SmartCook";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartCook/SmartCook-Prefix.pch";
+				INFOPLIST_FILE = "SmartCookTests/SmartCookTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4FE10BB81869087400E70805 /* Build configuration list for PBXProject "SmartCook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FE10BF01869087500E70805 /* Debug */,
+				4FE10BF11869087500E70805 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FE10BF21869087500E70805 /* Build configuration list for PBXNativeTarget "SmartCook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FE10BF31869087500E70805 /* Debug */,
+				4FE10BF41869087500E70805 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FE10BF51869087500E70805 /* Build configuration list for PBXNativeTarget "SmartCookTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FE10BF61869087500E70805 /* Debug */,
+				4FE10BF71869087500E70805 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4FE10BB51869087400E70805 /* Project object */;
+}
