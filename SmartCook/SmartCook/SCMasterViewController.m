@@ -7,10 +7,10 @@
 //
 
 #import "SCMasterViewController.h"
-
 #import "SCDetailViewController.h"
 
-@interface SCMasterViewController () {
+@interface SCMasterViewController ()
+{
     NSMutableArray *_objects;
 }
 @end

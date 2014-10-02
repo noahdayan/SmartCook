@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4F4994001869F1FE0091CFE6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F4993FF1869F1FE0091CFE6 /* libsqlite3.dylib */; };
-		4F4994031869F6D00091CFE6 /* SmartCookDB.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F4994021869F6D00091CFE6 /* SmartCookDB.sqlite3 */; };
-		4F4994061869FB4F0091CFE6 /* SCIngredientInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4994051869FB4F0091CFE6 /* SCIngredientInfo.m */; };
-		4F4994091869FD4F0091CFE6 /* SCIngredientDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4994081869FD4F0091CFE6 /* SCIngredientDatabase.m */; };
-		4F77D267186C7FE900987070 /* SCRecipeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F77D266186C7FE900987070 /* SCRecipeInfo.m */; };
-		4F77D26A186C800200987070 /* SCRecipeDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F77D269186C800200987070 /* SCRecipeDatabase.m */; };
 		4F939530186A2FB8004D8148 /* SCIngredientsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F93952F186A2FB8004D8148 /* SCIngredientsListViewController.m */; };
 		4F939538186A3651004D8148 /* SCIngredientsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F939537186A3651004D8148 /* SCIngredientsDetailViewController.m */; };
 		4FE10BC11869087500E70805 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE10BC01869087500E70805 /* Foundation.framework */; };
@@ -56,15 +51,6 @@
 /* Begin PBXFileReference section */
 		4F262CA61876015C00FC6828 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		4F4993FF1869F1FE0091CFE6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		4F4994021869F6D00091CFE6 /* SmartCookDB.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SmartCookDB.sqlite3; sourceTree = "<group>"; };
-		4F4994041869FB4F0091CFE6 /* SCIngredientInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIngredientInfo.h; sourceTree = "<group>"; };
-		4F4994051869FB4F0091CFE6 /* SCIngredientInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIngredientInfo.m; sourceTree = "<group>"; };
-		4F4994071869FD4F0091CFE6 /* SCIngredientDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIngredientDatabase.h; sourceTree = "<group>"; };
-		4F4994081869FD4F0091CFE6 /* SCIngredientDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIngredientDatabase.m; sourceTree = "<group>"; };
-		4F77D265186C7FE900987070 /* SCRecipeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecipeInfo.h; sourceTree = "<group>"; };
-		4F77D266186C7FE900987070 /* SCRecipeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecipeInfo.m; sourceTree = "<group>"; };
-		4F77D268186C800200987070 /* SCRecipeDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecipeDatabase.h; sourceTree = "<group>"; };
-		4F77D269186C800200987070 /* SCRecipeDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecipeDatabase.m; sourceTree = "<group>"; };
 		4F93952E186A2FB8004D8148 /* SCIngredientsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIngredientsListViewController.h; sourceTree = "<group>"; };
 		4F93952F186A2FB8004D8148 /* SCIngredientsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIngredientsListViewController.m; sourceTree = "<group>"; };
 		4F939536186A3651004D8148 /* SCIngredientsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIngredientsDetailViewController.h; sourceTree = "<group>"; };
@@ -139,19 +125,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4F4994011869F42D0091CFE6 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				4F4994021869F6D00091CFE6 /* SmartCookDB.sqlite3 */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		4FE10BB41869087400E70805 = {
 			isa = PBXGroup;
 			children = (
-				4FF056281882019000A88542 /* Parse.framework */,
-				4F4994011869F42D0091CFE6 /* Resources */,
 				4FE10BC61869087500E70805 /* SmartCook */,
 				4FE10BE81869087500E70805 /* SmartCookTests */,
 				4FE10BBF1869087500E70805 /* Frameworks */,
@@ -171,6 +147,7 @@
 		4FE10BBF1869087500E70805 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4FF056281882019000A88542 /* Parse.framework */,
 				4FF0563C1882059200A88542 /* iAd.framework */,
 				4FF0562A1882023A00A88542 /* AudioToolbox.framework */,
 				4FF0562B1882023A00A88542 /* CFNetwork.framework */,
@@ -205,14 +182,6 @@
 				4F93952F186A2FB8004D8148 /* SCIngredientsListViewController.m */,
 				4F939536186A3651004D8148 /* SCIngredientsDetailViewController.h */,
 				4F939537186A3651004D8148 /* SCIngredientsDetailViewController.m */,
-				4F4994041869FB4F0091CFE6 /* SCIngredientInfo.h */,
-				4F4994051869FB4F0091CFE6 /* SCIngredientInfo.m */,
-				4F4994071869FD4F0091CFE6 /* SCIngredientDatabase.h */,
-				4F4994081869FD4F0091CFE6 /* SCIngredientDatabase.m */,
-				4F77D265186C7FE900987070 /* SCRecipeInfo.h */,
-				4F77D266186C7FE900987070 /* SCRecipeInfo.m */,
-				4F77D268186C800200987070 /* SCRecipeDatabase.h */,
-				4F77D269186C800200987070 /* SCRecipeDatabase.m */,
 				4FE10BDB1869087500E70805 /* Images.xcassets */,
 				4FE10BC71869087500E70805 /* Supporting Files */,
 			);
@@ -293,7 +262,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SC;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Noah Dayan";
 				TargetAttributes = {
 					4FE10BE01869087500E70805 = {
@@ -328,7 +297,6 @@
 				4FE10BDC1869087500E70805 /* Images.xcassets in Resources */,
 				4FE10BCB1869087500E70805 /* InfoPlist.strings in Resources */,
 				4FE10BD41869087500E70805 /* Main.storyboard in Resources */,
-				4F4994031869F6D00091CFE6 /* SmartCookDB.sqlite3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,14 +315,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F77D26A186C800200987070 /* SCRecipeDatabase.m in Sources */,
-				4F77D267186C7FE900987070 /* SCRecipeInfo.m in Sources */,
 				4FE10BD71869087500E70805 /* SCMasterViewController.m in Sources */,
 				4F939530186A2FB8004D8148 /* SCIngredientsListViewController.m in Sources */,
 				4F939538186A3651004D8148 /* SCIngredientsDetailViewController.m in Sources */,
-				4F4994061869FB4F0091CFE6 /* SCIngredientInfo.m in Sources */,
 				4FE10BD11869087500E70805 /* SCAppDelegate.m in Sources */,
-				4F4994091869FD4F0091CFE6 /* SCIngredientDatabase.m in Sources */,
 				4FE10BCD1869087500E70805 /* main.m in Sources */,
 				4FE10BDA1869087500E70805 /* SCDetailViewController.m in Sources */,
 			);
@@ -410,7 +374,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -450,7 +413,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -487,7 +449,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/Noah/Documents/iPhone/SmartCook,
+					/Users/Noah/Documents/Github/SmartCook/SmartCook,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartCook/SmartCook-Prefix.pch";
@@ -504,7 +466,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/Noah/Documents/iPhone/SmartCook,
+					/Users/Noah/Documents/Github/SmartCook/SmartCook,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartCook/SmartCook-Prefix.pch";
@@ -517,7 +479,6 @@
 		4FE10BF61869087500E70805 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartCook.app/SmartCook";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -540,7 +501,6 @@
 		4FE10BF71869087500E70805 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartCook.app/SmartCook";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

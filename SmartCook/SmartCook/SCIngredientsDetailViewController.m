@@ -7,8 +7,6 @@
 //
 
 #import "SCIngredientsDetailViewController.h"
-#import "SCIngredientDatabase.h"
-#import "SCIngredientInfo.h"
 
 @interface SCIngredientsDetailViewController ()
 

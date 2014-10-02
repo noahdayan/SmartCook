@@ -9,8 +9,11 @@
 #import "SCDetailViewController.h"
 
 @interface SCDetailViewController ()
+
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+
 - (void)configureView;
+
 @end
 
 @implementation SCDetailViewController

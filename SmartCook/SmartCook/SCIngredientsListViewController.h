@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @class SCIngredientsDetailViewController;
 
-@interface SCIngredientsListViewController : UITableViewController
+@interface SCIngredientsListViewController : PFQueryTableViewController
 
-@property (nonatomic, retain) NSArray *ingredientsInfos;
+@property (nonatomic, retain) NSString *ingredientsType;
 @property (nonatomic, retain) NSMutableArray *ingredientsIDs;
 
 @property (nonatomic, retain) SCIngredientsDetailViewController *detailViewController;

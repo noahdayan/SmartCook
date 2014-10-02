@@ -7,10 +7,6 @@
 //
 
 #import "SCAppDelegate.h"
-#import "SCIngredientDatabase.h"
-#import "SCIngredientInfo.h"
-#import "SCRecipeDatabase.h"
-#import "SCRecipeInfo.h"
 #import <Parse/Parse.h>
 
 @implementation SCAppDelegate
@@ -22,7 +18,7 @@
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
     splitViewController.delegate = (id)navigationController.topViewController;
     
-    [Parse setApplicationId:@"MAYyhThzAkZHy9zlMUX40xdn0snXTt5OdGIQ6EHL" clientKey:@"jUTFAb00Tgu2sUFwI5iNgsp5RNS7quQZcx34QG7M"];
+    //[Parse setApplicationId:@"id" clientKey:@"key"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     return YES;

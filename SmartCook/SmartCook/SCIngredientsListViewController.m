@@ -7,11 +7,7 @@
 //
 
 #import "SCIngredientsListViewController.h"
-#import "SCIngredientInfo.h"
-#import "SCIngredientDatabase.h"
 #import "SCIngredientsDetailViewController.h"
-#import "SCRecipeInfo.h"
-#import "SCRecipeDatabase.h"
 
 @interface SCIngredientsListViewController ()
 
@@ -23,7 +19,11 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        // This table displays items in the User class
+        self.parseClassName = @"Ingredient";
+        self.pullToRefreshEnabled = YES;
+        self.paginationEnabled = YES;
+        self.objectsPerPage = 25;
     }
     return self;
 }
@@ -31,8 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.ingredientsInfos = [SCIngredientDatabase database].ingredientInfos;
+    
+    self.ingredientsType = @"All";
     self.ingredientsIDs = [[NSMutableArray alloc] init];
     self.title = @"Ingredients";
     
@@ -42,13 +42,18 @@
     UIBarButtonItem *clearButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(clearIngredients:)];
     self.navigationItem.leftBarButtonItem = clearButton;
     
+    UIBarButtonItem *addRecipeButton = [[UIBarButtonItem alloc] initWithTitle:@"Recipe" style:UIBarButtonItemStylePlain target:self action:@selector(addRecipe:)];
+    
+    UIBarButtonItem *spaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    UIBarButtonItem *addIngredientButton = [[UIBarButtonItem alloc] initWithTitle:@"Ingredient" style:UIBarButtonItemStylePlain target:self action:@selector(addIngredient:)];
+    
+    [self setToolbarItems:[NSArray arrayWithObjects:addIngredientButton, spaceButton, addRecipeButton, nil]];
+    
     self.detailViewController = (SCIngredientsDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,31 +62,66 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (PFQuery *)queryForTable
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Ingredient"];
+    
+    // If no objects are loaded in memory, we look to the cache first to fill the table
+    // and then subsequently do a query against the network.
+    if (self.objects.count == 0)
+    {
+        query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    }
+    
+    if(self.ingredientsType && ![self.ingredientsType isEqualToString: @"All"])
+    {
+        [query whereKey:@"type" equalTo:self.ingredientsType];
+    }
+    
+    [query orderByAscending:@"name"];
+    
+    return query;
+}
+
 - (void)searchRecipe:(id)sender
 {
-    NSArray *recipesWithIngredients = [[SCRecipeDatabase database] recipesWithIngredients:self.ingredientsIDs];
-    
-    if([recipesWithIngredients count] == 0)
+    [self recipesWithIngredients:self.ingredientsIDs];
+}
+
+- (void)receiveRecipe:(NSArray *)objects error:(NSError *)error
+{
+    if(!error)
     {
-        _detailViewController.detailDescriptionLabel.text = @"No Recipes!";
+        // The find succeeded.
+        NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
+        
+        if([objects count] == 0)
+        {
+            _detailViewController.detailDescriptionLabel.text = @"No Recipes!";
+        }
+        else
+        {
+            NSString *recipes = [[NSString alloc] init];
+            // Do something with the found objects
+            for(PFObject *object in objects)
+            {
+                if([recipes isEqualToString:@""])
+                {
+                    recipes = object[@"name"];
+                }
+                else
+                {
+                    recipes = [NSString stringWithFormat:@"%@, %@", recipes, object[@"name"]];
+                }
+            }
+            
+            _detailViewController.detailDescriptionLabel.text = recipes;
+        }
     }
     else
     {
-        NSString *recipes = [[NSString alloc] init];
-        for(SCRecipeInfo *info in recipesWithIngredients)
-        {
-            //NSLog(@"%@, %@", info.name, info.type);
-            if([recipes isEqualToString:@""])
-            {
-                recipes = info.name;
-            }
-            else
-            {
-                recipes = [NSString stringWithFormat:@"%@, %@", recipes, info.name];
-            }
-        }
-    
-        _detailViewController.detailDescriptionLabel.text = recipes;
+        // Log details of the failure
+        NSLog(@"Error: %@ %@", error, [error userInfo]);
     }
 }
 
@@ -92,11 +132,10 @@
         if(cell.accessoryType == UITableViewCellAccessoryCheckmark)
         {
             cell.accessoryType = UITableViewCellAccessoryNone;
-            //[self.ingredientsIDs removeObject:[NSNumber numberWithInteger:[self.tableView indexPathForCell:cell].row+1]];
-            [self.ingredientsIDs removeObject:cell.textLabel.text];
         }
     }
     
+    self.ingredientsIDs = [[NSMutableArray alloc] init];
     _detailViewController.ingredientCount.text = @"0 Ingredients";
 }
 
@@ -104,61 +143,46 @@
 {
     if(sender.selectedSegmentIndex == 1)
     {
-        self.ingredientsInfos = [[SCIngredientDatabase database] ingredientInfosWithType:@"fruit"];
+        self.ingredientsType = @"Fruit";
     }
     else if(sender.selectedSegmentIndex == 2)
     {
-        self.ingredientsInfos = [[SCIngredientDatabase database] ingredientInfosWithType:@"vegetable"];
+        self.ingredientsType = @"Vegetable";
     }
     else if(sender.selectedSegmentIndex == 3)
     {
-        self.ingredientsInfos = [[SCIngredientDatabase database] ingredientInfosWithType:@"cereal"];
+        self.ingredientsType = @"Cereal";
     }
     else
     {
-        self.ingredientsInfos = [[SCIngredientDatabase database] ingredientInfos];
+        self.ingredientsType = @"All";
     }
     
-    [self.tableView reloadData];
+    [self loadObjects];
 }
 
 - (void)dealloc
 {
-    self.ingredientsInfos = nil;
+    self.ingredientsType = nil;
     self.ingredientsIDs = nil;
     self.detailViewController = nil;
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return [_ingredientsInfos count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    PFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
-    if(cell == nil)
+    if(!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    SCIngredientInfo *info = [_ingredientsInfos objectAtIndex:indexPath.row];
-    cell.textLabel.text = info.name;
-    cell.detailTextLabel.text = info.type;
-    //if([self.ingredientsIDs containsObject:[NSNumber numberWithInteger:indexPath.row+1]])
-    if([self.ingredientsIDs containsObject:cell.textLabel.text])
+    cell.textLabel.text = object[@"name"];
+    cell.detailTextLabel.text = object[@"type"];
+    
+    if([self.ingredientsIDs containsObject:object.objectId])
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
@@ -177,83 +201,222 @@
     if(cell.accessoryType == UITableViewCellAccessoryNone)
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        //[self.ingredientsIDs addObject:[NSNumber numberWithInteger:indexPath.row+1]];
-        [self.ingredientsIDs addObject:cell.textLabel.text];
+
+        [self.ingredientsIDs addObject:[self objectAtIndexPath:indexPath].objectId];
     }
     else
     {
         cell.accessoryType = UITableViewCellAccessoryNone;
-        //[self.ingredientsIDs removeObject:[NSNumber numberWithInteger:indexPath.row+1]];
-        [self.ingredientsIDs removeObject:cell.textLabel.text];
+
+        [self.ingredientsIDs removeObject:[self objectAtIndexPath:indexPath].objectId];
     }
     
     [self updateIngredientCount];
     
-    SCIngredientInfo *info = [_ingredientsInfos objectAtIndex:indexPath.row];
-    _detailViewController.detailDescriptionLabel.text = info.name;
+    PFObject *info = [self objectAtIndexPath:indexPath];
+    _detailViewController.detailDescriptionLabel.text = info[@"name"];
 }
 
 - (void)updateIngredientCount
 {
     if([self.ingredientsIDs count] == 1)
     {
-        _detailViewController.ingredientCount.text = [NSString stringWithFormat:@"%i %@", [self.ingredientsIDs count],@"Ingredient"];
+        _detailViewController.ingredientCount.text = [NSString stringWithFormat:@"%lu %@", (unsigned long)[self.ingredientsIDs count], @"Ingredient"];
     }
     else
     {
-        _detailViewController.ingredientCount.text = [NSString stringWithFormat:@"%i %@", [self.ingredientsIDs count],@"Ingredients"];
+        _detailViewController.ingredientCount.text = [NSString stringWithFormat:@"%lu %@", (unsigned long)[self.ingredientsIDs count], @"Ingredients"];
     }
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSArray *)ingredientInfos
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NSMutableArray *infos = [[NSMutableArray alloc] init];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Ingredient"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %lu ingredients.", (unsigned long)objects.count);
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                NSLog(@"%@", object.objectId);
+                
+                [infos addObject:object.objectId];
+                
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+    return infos;
 }
 
-*/
+- (NSArray *)ingredientInfosWithType:(NSString *)type
+{
+    NSMutableArray *infos = [[NSMutableArray alloc] init];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Ingredient"];
+    [query whereKey:@"type" equalTo:type];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                NSLog(@"%@", object.objectId);
+                
+                [infos addObject:object.objectId];
+                
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+    return infos;
+}
+
+- (NSArray *)recipeInfos
+{
+    NSMutableArray *infos = [[NSMutableArray alloc] init];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Recipe"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                NSLog(@"%@", object.objectId);
+                
+                [infos addObject:object.objectId];
+                
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+    return infos;
+}
+
+- (NSArray *)recipeIngredients:(NSString *)recipeID
+{
+    NSMutableArray *ingredients = [[NSMutableArray alloc] init];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Recipe"];
+    [query getObjectInBackgroundWithId:recipeID block:^(PFObject *object, NSError *error) {
+        // Do something with the returned PFObject in the object variable.
+        for (NSString *ingredient in object[@"ingredients"])
+        {
+            [ingredients addObject:ingredient];
+        }
+        
+    }];
+    
+    return ingredients;
+}
+
+- (NSArray *)recipesWithIngredients:(NSArray *)ingredients
+{
+    NSMutableArray *recipes = [[NSMutableArray alloc] init];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Recipe"];
+    [query whereKey:@"ingredients" containsAllObjectsInArray:ingredients];
+    [query findObjectsInBackgroundWithTarget:self selector:@selector(receiveRecipe:error:)];
+    
+    return recipes;
+}
+
+- (void)addRecipe:(id)sender
+{
+    if([self.ingredientsIDs count] != 0)
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add Recipe" message:@"Enter name and type of recipe:" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            UITextField *name = (UITextField *)[[alert textFields] firstObject];
+            UITextField *type = (UITextField *)[[alert textFields] lastObject];
+            
+            PFObject *recipe = [PFObject objectWithClassName:@"Recipe"];
+            recipe[@"ingredients"] = self.ingredientsIDs;
+            recipe[@"name"] = name.text;
+            recipe[@"type"] = type.text;
+            [recipe saveInBackground];
+        }];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            
+            [alert dismissViewControllerAnimated:YES completion:nil];
+            
+        }];
+        
+        [alert addAction:cancel];
+        [alert addAction:ok];
+        
+        [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+            textField.placeholder = @"Name";
+        }];
+        [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+            textField.placeholder = @"Type";
+        }];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add Recipe" message:@"Select at least one ingredient!" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            
+            [alert dismissViewControllerAnimated:YES completion:nil];
+            
+        }];
+        
+        [alert addAction:cancel];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+}
+
+- (void)addIngredient:(id)sender
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add Ingredient" message:@"Enter name and type of ingredient:" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        UITextField *name = (UITextField *)[[alert textFields] firstObject];
+        UITextField *type = (UITextField *)[[alert textFields] lastObject];
+        
+        PFObject *ingredient = [PFObject objectWithClassName:@"Ingredient"];
+        ingredient[@"name"] = name.text;
+        ingredient[@"type"] = type.text;
+        [ingredient saveInBackground];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+        [alert dismissViewControllerAnimated:YES completion:nil];
+        
+    }];
+    
+    [alert addAction:cancel];
+    [alert addAction:ok];
+    
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Name";
+    }];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Type";
+    }];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 @end
