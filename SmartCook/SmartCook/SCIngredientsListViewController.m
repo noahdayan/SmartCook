@@ -7,7 +7,7 @@
 //
 
 #import "SCIngredientsListViewController.h"
-#import "SCIngredientsDetailViewController.h"
+#import "SCRecipesDetailViewController.h"
 
 @interface SCIngredientsListViewController ()
 
@@ -19,7 +19,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // This table displays items in the User class
+        // This table displays items in the Ingredient class
         self.parseClassName = @"Ingredient";
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = YES;
@@ -50,7 +50,7 @@
     
     [self setToolbarItems:[NSArray arrayWithObjects:addIngredientButton, spaceButton, addRecipeButton, nil]];
     
-    self.detailViewController = (SCIngredientsDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    self.detailViewController = (SCRecipesDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -97,25 +97,28 @@
         
         if([objects count] == 0)
         {
-            _detailViewController.detailDescriptionLabel.text = @"No Recipes!";
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Recipe" message:@"There are no recipes with these ingredients!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                
+                [alert dismissViewControllerAnimated:YES completion:nil];
+                
+            }];
+            
+            [alert addAction:cancel];
+            
+            [self presentViewController:alert animated:YES completion:nil];
         }
         else
         {
-            NSString *recipes = [[NSString alloc] init];
-            // Do something with the found objects
+            NSMutableArray *recipes = [[NSMutableArray alloc] init];
             for(PFObject *object in objects)
             {
-                if([recipes isEqualToString:@""])
-                {
-                    recipes = object[@"name"];
-                }
-                else
-                {
-                    recipes = [NSString stringWithFormat:@"%@, %@", recipes, object[@"name"]];
-                }
+                [recipes addObject:object.objectId];
             }
             
-            _detailViewController.detailDescriptionLabel.text = recipes;
+            _detailViewController.recipesIDs = recipes;
+            [_detailViewController loadObjects];
         }
     }
     else
@@ -136,7 +139,9 @@
     }
     
     self.ingredientsIDs = [[NSMutableArray alloc] init];
-    _detailViewController.ingredientCount.text = @"0 Ingredients";
+    [self.tableView reloadData];
+    _detailViewController.recipesIDs = [[NSArray alloc] init];
+    [_detailViewController loadObjects];
 }
 
 - (IBAction)filterIngredientType:(UISegmentedControl *)sender
@@ -211,22 +216,23 @@
         [self.ingredientsIDs removeObject:[self objectAtIndexPath:indexPath].objectId];
     }
     
-    [self updateIngredientCount];
-    
-    PFObject *info = [self objectAtIndexPath:indexPath];
-    _detailViewController.detailDescriptionLabel.text = info[@"name"];
+    [self.tableView reloadData];
 }
 
-- (void)updateIngredientCount
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+    NSString *count = [[NSString alloc] init];
+    
     if([self.ingredientsIDs count] == 1)
     {
-        _detailViewController.ingredientCount.text = [NSString stringWithFormat:@"%lu %@", (unsigned long)[self.ingredientsIDs count], @"Ingredient"];
+        count = [NSString stringWithFormat:@"%lu %@", (unsigned long)[self.ingredientsIDs count], @"Ingredient"];
     }
     else
     {
-        _detailViewController.ingredientCount.text = [NSString stringWithFormat:@"%lu %@", (unsigned long)[self.ingredientsIDs count], @"Ingredients"];
+        count = [NSString stringWithFormat:@"%lu %@", (unsigned long)[self.ingredientsIDs count], @"Ingredients"];
     }
+    
+    return count;
 }
 
 - (NSArray *)ingredientInfos

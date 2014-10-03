@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		4F4994001869F1FE0091CFE6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F4993FF1869F1FE0091CFE6 /* libsqlite3.dylib */; };
 		4F939530186A2FB8004D8148 /* SCIngredientsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F93952F186A2FB8004D8148 /* SCIngredientsListViewController.m */; };
-		4F939538186A3651004D8148 /* SCIngredientsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F939537186A3651004D8148 /* SCIngredientsDetailViewController.m */; };
+		4F939538186A3651004D8148 /* SCRecipesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F939537186A3651004D8148 /* SCRecipesDetailViewController.m */; };
 		4FE10BC11869087500E70805 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE10BC01869087500E70805 /* Foundation.framework */; };
 		4FE10BC31869087500E70805 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE10BC21869087500E70805 /* CoreGraphics.framework */; };
 		4FE10BC51869087500E70805 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE10BC41869087500E70805 /* UIKit.framework */; };
@@ -53,8 +53,8 @@
 		4F4993FF1869F1FE0091CFE6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4F93952E186A2FB8004D8148 /* SCIngredientsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIngredientsListViewController.h; sourceTree = "<group>"; };
 		4F93952F186A2FB8004D8148 /* SCIngredientsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIngredientsListViewController.m; sourceTree = "<group>"; };
-		4F939536186A3651004D8148 /* SCIngredientsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIngredientsDetailViewController.h; sourceTree = "<group>"; };
-		4F939537186A3651004D8148 /* SCIngredientsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIngredientsDetailViewController.m; sourceTree = "<group>"; };
+		4F939536186A3651004D8148 /* SCRecipesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRecipesDetailViewController.h; sourceTree = "<group>"; };
+		4F939537186A3651004D8148 /* SCRecipesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecipesDetailViewController.m; sourceTree = "<group>"; };
 		4FE10BBD1869087500E70805 /* SmartCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FE10BC01869087500E70805 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4FE10BC21869087500E70805 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -180,8 +180,8 @@
 				4FE10BD91869087500E70805 /* SCDetailViewController.m */,
 				4F93952E186A2FB8004D8148 /* SCIngredientsListViewController.h */,
 				4F93952F186A2FB8004D8148 /* SCIngredientsListViewController.m */,
-				4F939536186A3651004D8148 /* SCIngredientsDetailViewController.h */,
-				4F939537186A3651004D8148 /* SCIngredientsDetailViewController.m */,
+				4F939536186A3651004D8148 /* SCRecipesDetailViewController.h */,
+				4F939537186A3651004D8148 /* SCRecipesDetailViewController.m */,
 				4FE10BDB1869087500E70805 /* Images.xcassets */,
 				4FE10BC71869087500E70805 /* Supporting Files */,
 			);
@@ -317,7 +317,7 @@
 			files = (
 				4FE10BD71869087500E70805 /* SCMasterViewController.m in Sources */,
 				4F939530186A2FB8004D8148 /* SCIngredientsListViewController.m in Sources */,
-				4F939538186A3651004D8148 /* SCIngredientsDetailViewController.m in Sources */,
+				4F939538186A3651004D8148 /* SCRecipesDetailViewController.m in Sources */,
 				4FE10BD11869087500E70805 /* SCAppDelegate.m in Sources */,
 				4FE10BCD1869087500E70805 /* main.m in Sources */,
 				4FE10BDA1869087500E70805 /* SCDetailViewController.m in Sources */,
