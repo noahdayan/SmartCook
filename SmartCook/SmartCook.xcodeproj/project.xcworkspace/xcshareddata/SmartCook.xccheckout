@@ -14,7 +14,7 @@
 		<string>https://github.com/noahdayan/SmartCook.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>SmartCook/SmartCook.xcodeproj/project.xcworkspace</string>
+	<string>SmartCook/SmartCook.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>85CA2A0F8E620C83FE79501AC0B1CB783F84653A</key>
